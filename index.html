@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forms browser</title>
+</head>
+
+<body>
+    <input type="text">
+    <a href=""></a>
+    <script>
+        document.querySelector("input").onchange = ev => {
+            document.querySelector("a").href = ev.target.value
+            document.querySelector("a").innerText = ev.target.value
+            console.log(ev.target.value)
+        }
+    </script>
+</body>
+
+</html>
