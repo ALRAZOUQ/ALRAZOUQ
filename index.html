@@ -1,20 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>forms browser</title>
+    <title>Paste Button Example</title>
+
 </head>
 
 <body>
-    <input type="text">
-    <a href=""></a>
+    <h1>Paste URL</h1>
+    <input type="text" id="urlInput" placeholder="Paste your URL here">
+    <button onclick="pasteLink()">Paste</button>
+    <a id="a" href=""></a>
     <script>
         document.querySelector("input").onchange = ev => {
-            document.querySelector("a").href = ev.target.value
-            document.querySelector("a").innerText = ev.target.value
+            document.querySelector("#a").href = ev.target.value
+            document.querySelector("#a").innerText = ev.target.value
             console.log(ev.target.value)
+        }
+    </script>
+    <script>
+        function pasteLink() {
+            // Get the input field
+            var inputField = document.getElementById("urlInput");
+
+            // Use the Clipboard API to get the content
+            navigator.clipboard.readText().then(function (text) {
+                // Paste the text into the input field
+                inputField.value = text;
+                document.querySelector("#a").innerText = text
+                document.querySelector("#a").href = text
+
+
+            }).catch(function (err) {
+                console.error("Failed to read clipboard contents: ", err);
+            });
         }
     </script>
 </body>
